@@ -1,6 +1,6 @@
 import { sleep } from '../utils/sleep';
 import { OrderRequest } from '../types/order.types';
-import { DexType } from '../generated/prisma/client';;
+import { DexType } from '@prisma/client';
 
 const basePrice = 1; // base mock price
 

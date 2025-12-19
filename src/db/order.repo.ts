@@ -1,5 +1,5 @@
 import { prisma } from './prisma';
-import { OrderStatus, DexType } from '../generated/prisma/client';;
+import { OrderStatus, DexType } from '@prisma/client';
 
 export async function createOrder(orderId: string, payload: any) {
   return prisma.order.create({

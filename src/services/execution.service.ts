@@ -1,6 +1,6 @@
 import { emitStatus } from './websocket.service';
 import { updateStatus, incrementRetry } from '../db/order.repo';
-import { MockDexRouter } from '../dex/mockdexRouter';
+import { MockDexRouter } from '../dex/mockDexRouter';
 import { OrderRequest } from '../types/order.types';
 
 const dexRouter = new MockDexRouter();

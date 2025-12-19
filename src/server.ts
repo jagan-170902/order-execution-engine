@@ -12,9 +12,13 @@ import './queue/order.worker';
   await app.register(orderRoutes);
   await app.register(registerWebSocket);
 
-  const PORT = process.env.PORT || 3000;
+  const PORT = Number(process.env.PORT) || 3000;
   try {
-    await app.listen({ port: Number(PORT) });
+    await app.listen({
+      port:  PORT,
+      host: "0.0.0.0",
+    });
+
     console.log(`🚀 Server running on http://localhost:${PORT}`);
   } catch (err) {
     app.log.error(err);

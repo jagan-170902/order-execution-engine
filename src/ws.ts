@@ -3,8 +3,17 @@ import { SocketStream } from '@fastify/websocket';
 import { registerSocket, removeSocket } from './services/websocket.service';
 
 export async function registerWebSocket(app: FastifyInstance) {
-  app.get('/ws/:userId', { websocket: true }, (connection: SocketStream, request) => {
-    const { userId } = request.params as { userId: string };
+  app.get('/ws', { websocket: true }, (connection: SocketStream, request) => {
+    // Read userId from query string
+    const query = request.query as { userId?: string };
+    const userId = query.userId;
+
+    if (!userId) {
+      console.log('WebSocket connection rejected: missing userId');
+      connection.socket.close(1008, 'Missing userId');
+      return;
+    }
+
     const ws = connection.socket;
 
     registerSocket(userId, ws);

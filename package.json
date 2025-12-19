@@ -4,7 +4,8 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "npx ts-node src/server.ts",
-    "worker": "npx ts-node src/queue/order.worker.ts"
+    "worker": "npx ts-node src/queue/order.worker.ts",
+    "prod": "npx prisma migrate deploy && npx prisma generate && npm run dev"
   },
   "dependencies": {
     "@fastify/websocket": "^8",
